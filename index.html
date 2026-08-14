@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Steam 游戏折扣情报站 · 每日更新</title>
+<meta name="description" content="每日更新的 Steam 游戏打折信息：折扣力度、现价、好评率、折扣到期时间一目了然。">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none';">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <div class="logo">ST</div>
+    <div class="title">Steam <em>游戏折扣情报站</em></div>
+  </div>
+  <div class="updated">
+    <span class="dot"></span>
+    <span id="updatedText">数据加载中…</span>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>今日 <span class="hl">Steam</span> 打折好游</h1>
+  <p>数据来自 Steam 官方接口 · 每日自动更新 · 点击卡片直达商店页面</p>
+  <div class="stats">
+    <span class="stat">在售折扣 <b id="statCount">–</b>款</span>
+    <span class="stat">最高折扣 <b id="statMax">–</b></span>
+    <span class="stat">平均折扣 <b id="statAvg" class="blue">–</b></span>
+  </div>
+</section>
+
+<div class="toolbar">
+  <div class="search">
+    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0A4.5 4.5 0 1 1 14 9.5 4.5 4.5 0 0 1 9.5 14z"/></svg>
+    <input id="searchInput" type="text" placeholder="搜索游戏名称…" autocomplete="off">
+  </div>
+  <div class="chips" id="chips">
+    <button class="chip active" data-min="0">全部</button>
+    <button class="chip" data-min="50">50% 以上</button>
+    <button class="chip" data-min="70">70% 以上</button>
+    <button class="chip" data-min="85">85% 以上</button>
+  </div>
+  <div class="sort">
+    <select id="sortSelect">
+      <option value="discount">按折扣力度</option>
+      <option value="priceAsc">价格从低到高</option>
+      <option value="priceDesc">价格从高到低</option>
+      <option value="rating">按好评率</option>
+      <option value="expiry">按折扣到期</option>
+    </select>
+  </div>
+</div>
+
+<div class="grid-wrap">
+  <div class="grid skeleton" id="grid"></div>
+  <div class="empty" id="empty" style="display:none;">
+    <div class="icon">🎮</div>
+    <h3>没有找到符合条件的游戏</h3>
+    <p>试试调整筛选条件或搜索关键词</p>
+  </div>
+</div>
+
+<footer>
+  <div>数据来源：<a href="https://store.steampowered.com/" target="_blank" rel="noopener noreferrer">Steam 商店官方接口</a>（featuredcategories / appdetails / appreviews），每日自动抓取更新</div>
+  <div>价格与折扣可能随 Steam 调整而变动，请以 Steam 商店页面为准 · 本站仅作信息展示，与 Valve 公司无关联</div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
